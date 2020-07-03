@@ -8,7 +8,9 @@
     "@testing-library/user-event": "^7.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "styled-components": "^5.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -17,7 +19,32 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "prettier",
+      "airbnb",
+      "prettier/react"
+    ],
+    "parser": "babel-eslint",
+    "plugins": [
+      "prettier",
+      "react",
+      "react-hooks"
+    ],
+    "rules": {
+      "react/jsx-props-no-spreading": "off",
+      "import/prefer-default-export": "off",
+      "prettier/prettier": [
+        "error",
+        {
+          "singleQuote": true,
+          "trailingComma": "all",
+          "arrowParens": "avoid",
+          "printWidth": 180,
+          "tabWidth": 2
+        }
+      ]
+    }
   },
   "browserslist": {
     "production": [
@@ -30,5 +57,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-eslint": "10.1.0",
+    "eslint-config-airbnb": "18.2.0",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-plugin-prettier": "3.1.4",
+    "eslint-plugin-react": "7.20.3",
+    "eslint-plugin-react-hooks": "4.0.5",
+    "prettier": "2.0.5"
   }
 }
