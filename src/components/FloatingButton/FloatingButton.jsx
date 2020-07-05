@@ -4,7 +4,7 @@ import Button from '../Button/Button';
 const FloatingButton = styled(Button)`
   position: absolute;
   bottom: 72px;
-  right: 20px;
+  right: 80px;
   border-radius: 50%;
   z-index: 100;
   background: transparent linear-gradient(180deg, #e43959 0%, #ec584c 100%) 0%
@@ -16,6 +16,10 @@ const FloatingButton = styled(Button)`
   justify-content: center;
   padding: 0;
   font-size: 28px;
+
+  @media (max-width: 767px) {
+    right: 20px;
+  }
 `;
 
 export default FloatingButton;

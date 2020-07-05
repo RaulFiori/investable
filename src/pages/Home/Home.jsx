@@ -1,6 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Title, SubTitle, SignUpButton, DetailText, LoginButton, Logo, Center } from './Home.styles';
+import {
+  Title,
+  SubTitle,
+  SignUpButton,
+  DetailText,
+  LoginButton,
+  Logo,
+  Center,
+} from './Home.styles';
 
 const Home = () => {
   return (
@@ -19,7 +26,5 @@ const Home = () => {
     </>
   );
 };
-
-Home.propTypes = {};
 
 export default Home;
