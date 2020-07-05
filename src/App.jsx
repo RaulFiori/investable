@@ -4,6 +4,7 @@ import Home from './pages/Home/Home';
 import { Background } from './App.styles';
 import { Login } from './pages/Login/Login';
 import { Main } from './pages/Main/Main';
+import { Chat } from './pages/Chat/Chat';
 
 function App() {
   return (
@@ -16,9 +17,12 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/signup">signup</Route>
+          {/* <Route path="/signup">signup</Route> */}
           <Route path="/home/:userId">
             <Main />
+          </Route>
+          <Route path="/chat/:type">
+            <Chat />
           </Route>
         </Switch>
       </Router>

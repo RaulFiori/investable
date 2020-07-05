@@ -13,7 +13,8 @@ import Dashboard from '../Dashboard/Dashboard';
 import Header from '../../components/Header/Header';
 import { TabsContainer, Tab, TabLabel, Content } from './Main.styles';
 import FloatingButton from '../../components/FloatingButton/FloatingButton';
-import logo from '../../assets/Investable.svg';
+import { Profile } from '../Profile/Profile';
+import { Invest } from '../Invest/Invest';
 
 const TABS = [
   {
@@ -25,13 +26,13 @@ const TABS = [
   {
     key: 'invest',
     icon: mdiFinance,
-    component: Dashboard,
+    component: Invest,
     label: 'Aplicar',
   },
   {
     key: 'profile',
     icon: mdiAccountOutline,
-    component: Dashboard,
+    component: Profile,
     label: 'Perfil',
   },
 ];
@@ -51,7 +52,11 @@ export const Main = () => {
       <Content>
         <Switch>
           {TABS.map(({ key, component }) => (
-            <Route path={`${path}/${key}`} component={component} />
+            <Route
+              key={`route-${key}`}
+              path={`${path}/${key}`}
+              component={component}
+            />
           ))}
           <Route exact path={path}>
             <Redirect to={`${url}/dashboard`} />
@@ -61,6 +66,7 @@ export const Main = () => {
       <TabsContainer>
         {TABS.map(({ key, icon, label }) => (
           <Tab
+            key={key}
             onClick={() => history.push(`${url}/${key}`)}
             selected={location.pathname.includes(key)}
           >
@@ -69,7 +75,7 @@ export const Main = () => {
           </Tab>
         ))}
       </TabsContainer>
-      <FloatingButton>In</FloatingButton>
+      <FloatingButton onClick={() => history.push('/chat/help')}>In</FloatingButton>
     </>
   );
 };

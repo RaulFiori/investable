@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, ValueField, Field } from './Product.styles';
+import Icon from '@mdi/react';
+import { mdiMenuDown } from '@mdi/js';
 
 const Product = ({ product: { type, incomeRate, from } }) => {
   return (
@@ -12,6 +14,9 @@ const Product = ({ product: { type, incomeRate, from } }) => {
       <ValueField percentage={25}>
         <Field>Taxa</Field>
         {`${incomeRate}%`}
+      </ValueField>
+      <ValueField end percentage={15}>
+        <Icon path={mdiMenuDown} size="16px" color="#fff" />
       </ValueField>
     </Card>
   );

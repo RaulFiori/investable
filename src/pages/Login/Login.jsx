@@ -5,7 +5,6 @@ import TextField from '../../components/TextField/TextField';
 import Button from '../../components/Button/Button';
 import { Centralize } from './Login.styles';
 
-const userId = 'mock';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
@@ -31,7 +30,7 @@ export const Login = () => {
           type="password"
         />
         <Button
-          onClick={() => history.push(`/home/${userId}`)}
+          onClick={() => history.push(`/home/${process.env.REACT_APP_USER_ID}`)}
           disabled={email.length === 0 && password.length === 0}
         >
           ENTRAR

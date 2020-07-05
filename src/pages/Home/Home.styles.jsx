@@ -27,12 +27,19 @@ export const DetailText = styled.span`
   font-weight: 300;
 `;
 
-export const SignUpButton = styled(Button).attrs(() => ({ as: 'a', href: '/signup' }))`
+export const SignUpButton = styled(Button).attrs(() => ({
+  as: 'a',
+  href: '/chat/signup',
+}))`
   margin-bottom: 20px;
   margin-top: 60px;
 `;
 
-export const LoginButton = styled(Button).attrs(() => ({ as: 'a', variant: 'outlined', href: '/login' }))``;
+export const LoginButton = styled(Button).attrs(() => ({
+  as: 'a',
+  variant: 'outlined',
+  href: '/login',
+}))``;
 
 export const Center = styled.div`
   display: flex;

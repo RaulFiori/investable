@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import Icon from '@mdi/react';
+import { mdiArrowUp } from '@mdi/js';
 import { useParams } from 'react-router-dom';
 import Api from '../../api/api';
 import Section from '../../components/Section/Section';
@@ -8,11 +10,8 @@ import {
   Tag,
   Value,
   ValuesContainer,
-  SectionMargin,
   Chart,
 } from './Dashboard.styles';
-import Icon from '@mdi/react';
-import { mdiArrowUp } from '@mdi/js';
 import Product from '../../components/Product/Product';
 
 const api = new Api();
@@ -22,7 +21,7 @@ const Dashboard = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    setData(api.getDashboard(userId));
+    api.getDashboard(userId).then(setData);
   }, [userId]);
 
   if (!data) {

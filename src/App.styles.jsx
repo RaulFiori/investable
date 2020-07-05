@@ -9,9 +9,12 @@ export const Background = styled.main`
   flex-direction: column;
   box-sizing: border-box;
   padding: 20px 82px;
+  padding-bottom: 80px;
+  overflow: scroll;
   height: 100vh;
 
   @media (max-width: 767px) {
-    padding: 20px 20px;
+    padding: 20px;
+    padding-bottom: 80px;
   }
 `;

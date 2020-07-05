@@ -21,6 +21,7 @@ export const ValueField = styled.span`
   color: #fff;
   display: flex;
   flex-direction: column;
+  align-items: ${({ end }) => (end ? 'flex-end' : 'flex-start')};
   flex-basis: ${({ percentage = 60 }) => percentage}%;
 `;
 
