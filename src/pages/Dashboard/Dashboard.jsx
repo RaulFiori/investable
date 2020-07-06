@@ -11,6 +11,7 @@ import {
   Value,
   ValuesContainer,
   Chart,
+  ChartContainer,
 } from './Dashboard.styles';
 import Product from '../../components/Product/Product';
 
@@ -57,7 +58,9 @@ const Dashboard = () => {
           <Tag>{`${incomeRateCDI}% do CDI`}</Tag>
         </ValuesContainer>
       </Section>
-      <Chart />
+      <ChartContainer>
+        <Chart />
+      </ChartContainer>
       <Section title="Produtos recomendados para seu perfil">
         {recomendedProducts.map(product => (
           <Product product={product} />

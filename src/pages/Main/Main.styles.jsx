@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import whiteLogo from '../../assets/Investable_white.svg';
 
 export const TabsContainer = styled.div`
   width: 100vw;
@@ -39,4 +40,9 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: 40px;
+`;
+
+export const WhiteLogo = styled.img.attrs(() => ({ src: whiteLogo, alt: '' }))`
+  height: 28px;
+  width: auto;
 `;

@@ -11,7 +11,13 @@ import {
 import { mdiHomeOutline, mdiAccountOutline, mdiFinance } from '@mdi/js';
 import Dashboard from '../Dashboard/Dashboard';
 import Header from '../../components/Header/Header';
-import { TabsContainer, Tab, TabLabel, Content } from './Main.styles';
+import {
+  TabsContainer,
+  Tab,
+  TabLabel,
+  Content,
+  WhiteLogo,
+} from './Main.styles';
 import FloatingButton from '../../components/FloatingButton/FloatingButton';
 import { Profile } from '../Profile/Profile';
 import { Invest } from '../Invest/Invest';
@@ -75,7 +81,9 @@ export const Main = () => {
           </Tab>
         ))}
       </TabsContainer>
-      <FloatingButton onClick={() => history.push('/chat/help')}>In</FloatingButton>
+      <FloatingButton onClick={() => history.push('/chat/help')}>
+        <WhiteLogo />
+      </FloatingButton>
     </>
   );
 };

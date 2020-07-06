@@ -5,7 +5,6 @@ import TextField from '../../components/TextField/TextField';
 import Button from '../../components/Button/Button';
 import { Centralize } from './Login.styles';
 
-
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

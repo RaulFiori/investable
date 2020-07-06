@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import chart from '../../assets/chart.svg';
 
 export const ValuesContainer = styled.div`
   display: flex;
@@ -30,11 +31,14 @@ export const Tag = styled.span`
   }
 `;
 
-export const Chart = styled.div`
-  background: transparent linear-gradient(180deg, #e43959 0%, #ec584c00 100%) 0%
-    0% no-repeat padding-box;
-  opacity: 1;
+export const ChartContainer = styled.div`
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Chart = styled.img.attrs(() => ({ src: chart, alt: '' }))`
   width: 307px;
   height: 206px;
-  margin-bottom: 30px;
 `;

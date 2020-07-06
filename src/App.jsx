@@ -17,7 +17,6 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          {/* <Route path="/signup">signup</Route> */}
           <Route path="/home/:userId">
             <Main />
           </Route>
