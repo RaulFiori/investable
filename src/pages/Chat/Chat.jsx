@@ -5,20 +5,15 @@ import { mdiSend } from '@mdi/js';
 import Header from '../../components/Header/Header';
 import {
   Background,
-  Message,
-  MessageText,
-  ChatHead,
-  Logo,
   UserInputContainer,
   Form,
   TextFieldContainer,
-  UserChatHead,
   ButtonForm,
 } from './Chat.styles';
 import reducer, { initialState } from './ChatReducer';
 import TextField from '../../components/TextField/TextField';
 import IconButton from '../../components/IconButton/IconButton';
-import Button from '../../components/Button/Button';
+import MessageComponent from './components/Message';
 
 const helpMessages = [
   `Olá João, podemos te ajudar em algo? Talvez uma ajuda sobre fundos
@@ -42,6 +37,21 @@ const ageAnswer = (
     Sobre investimentos, o que você pensa quando fala sobre?
   </>
 );
+const willAnswer = (
+  <>
+    Legal, eu também! <br />
+    E, me conte, do que você gosta mais em investimentos?
+  </>
+);
+
+const riskAnswers = [
+  { scrollOnEnter: false, message: 'Certamente podemos te ajudar com isso!' },
+  {
+    scrollOnEnter: true,
+    message:
+      'Muito obrigado pelas respostas João. Com isso já consigo te sugerir vários produtos do nosso portfólio, vamos lá?',
+  },
+];
 
 export const Chat = () => {
   const { type } = useParams();
@@ -53,8 +63,9 @@ export const Chat = () => {
   const initialMessages = isHelp ? helpMessages : signupMessages;
   const title = isHelp ? 'CHAT' : 'ABRA SUA CONTA';
 
-  const { inputLabel, inputType, step, name, age } = state;
+  const { inputLabel, inputType, step, name, age, will, risk } = state;
   const [initialLetter] = name || [];
+  const userInitial = initialLetter?.toUpperCase();
   const isInTextFieldSteps = ['name', 'age'].includes(step);
 
   const onSubmit = event => {
@@ -72,53 +83,50 @@ export const Chat = () => {
       <Header>{title}</Header>
       <Background>
         {initialMessages.map(message => (
-          <Message>
-            <MessageText>
-              <ChatHead>
-                <Logo />
-              </ChatHead>
-              {message}
-            </MessageText>
-          </Message>
+          <MessageComponent show>{message}</MessageComponent>
         ))}
-        {name && (
-          <>
-            <Message userMessage>
-              <MessageText>
-                <UserChatHead>{initialLetter.toUpperCase()}</UserChatHead>
-                {name}
-              </MessageText>
-            </Message>
-            {nameAnswers.map(message => (
-              <Message>
-                <MessageText>
-                  <ChatHead>
-                    <Logo />
-                  </ChatHead>
-                  {message.replace('#userName', name)}
-                </MessageText>
-              </Message>
-            ))}
-          </>
-        )}
-        {age && (
-          <>
-            <Message userMessage>
-              <MessageText>
-                <UserChatHead>{initialLetter.toUpperCase()}</UserChatHead>
-                {age}
-              </MessageText>
-            </Message>
-            <Message>
-              <MessageText>
-                <ChatHead>
-                  <Logo />
-                </ChatHead>
-                {ageAnswer}
-              </MessageText>
-            </Message>
-          </>
-        )}
+        <MessageComponent
+          show={Boolean(name)}
+          userMessage
+          userInitial={userInitial}
+        >
+          {name}
+        </MessageComponent>
+        {nameAnswers.map(message => (
+          <MessageComponent show={Boolean(name)}>
+            {message.replace('#userName', name)}
+          </MessageComponent>
+        ))}
+        <MessageComponent
+          show={Boolean(age)}
+          userMessage
+          userInitial={userInitial}
+        >
+          {age}
+        </MessageComponent>
+        <MessageComponent show={Boolean(age)}>{ageAnswer}</MessageComponent>
+        <MessageComponent
+          show={Boolean(will)}
+          userMessage
+          userInitial={userInitial}
+        >
+          {will}
+        </MessageComponent>
+        <MessageComponent scrollOnEnter show={Boolean(will)}>
+          {willAnswer}
+        </MessageComponent>
+        <MessageComponent
+          show={Boolean(risk)}
+          userMessage
+          userInitial={userInitial}
+        >
+          {risk}
+        </MessageComponent>
+        {riskAnswers.map(({ message, scrollOnEnter }) => (
+          <MessageComponent scrollOnEnter={scrollOnEnter} show={Boolean(risk)}>
+            {message}
+          </MessageComponent>
+        ))}
         <UserInputContainer direction={isInTextFieldSteps ? 'row' : 'column'}>
           {isInTextFieldSteps && (
             <Form onSubmit={onSubmit}>
@@ -131,27 +139,29 @@ export const Chat = () => {
                   onChange={({ target: { value } }) => setText(value)}
                 />
               </TextFieldContainer>
-              <IconButton type="submit">
+              <IconButton disabled={text?.length === 0} type="submit">
                 <Icon path={mdiSend} color="#fff" size="20px" />
               </IconButton>
             </Form>
           )}
           {step === 'will' && (
             <>
-              <ButtonForm onClick={setResponse('will', 'no')}>
+              <ButtonForm onClick={setResponse('will', 'Não curto muito')}>
                 Não curto muito
               </ButtonForm>
-              <ButtonForm onClick={setResponse('will', 'yes')}>
+              <ButtonForm
+                onClick={setResponse('will', 'Eu gosto de investimentos!')}
+              >
                 Eu gosto de investimentos!
               </ButtonForm>
             </>
           )}
           {step === 'risk' && (
             <>
-              <ButtonForm onClick={setResponse('risk', 'risky')}>
+              <ButtonForm onClick={setResponse('risk', 'Rentabilidade!')}>
                 Rentabilidade
               </ButtonForm>
-              <ButtonForm onClick={setResponse('risk', 'safe')}>
+              <ButtonForm onClick={setResponse('risk', 'Segurança!')}>
                 Segurança
               </ButtonForm>
             </>

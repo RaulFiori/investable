@@ -44,4 +44,6 @@ export const Container = styled.div`
   min-height: 28px;
   justify-content: center;
   position: relative;
+  /* position: sticky;
+  top: 0; */
 `;

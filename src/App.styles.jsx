@@ -1,4 +1,21 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+const handleHasPadding = ({ hasPadding }) => {
+  if (hasPadding) {
+    return css`
+      padding: 20px 82px;
+      padding-bottom: 80px;
+
+      @media (max-width: 767px) {
+        padding: 20px;
+        padding-bottom: 80px;
+      }
+    `;
+  }
+  return css`
+    padding-top: 20px;
+  `;
+};
 
 export const Background = styled.main`
   background: transparent
@@ -8,13 +25,8 @@ export const Background = styled.main`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  padding: 20px 82px;
-  padding-bottom: 80px;
   overflow: scroll;
   height: 100vh;
 
-  @media (max-width: 767px) {
-    padding: 20px;
-    padding-bottom: 80px;
-  }
+  ${handleHasPadding}
 `;
