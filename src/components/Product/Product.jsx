@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, ValueField, Field } from './Product.styles';
 import Icon from '@mdi/react';
 import { mdiMenuDown } from '@mdi/js';
+import { Card, ValueField, Field } from './Product.styles';
 
 const Product = ({ product: { type, incomeRate, from } }) => {
   return (
