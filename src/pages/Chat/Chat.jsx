@@ -49,7 +49,7 @@ const riskAnswers = [
   {
     scrollOnEnter: true,
     message:
-      'Muito obrigado pelas respostas João. Com isso já consigo te sugerir vários produtos do nosso portfólio, vamos lá?',
+      'Muito obrigado pelas respostas #userName. Com isso já consigo te sugerir vários produtos do nosso portfólio, vamos lá?',
   },
 ];
 
@@ -124,7 +124,7 @@ export const Chat = () => {
         </MessageComponent>
         {riskAnswers.map(({ message, scrollOnEnter }) => (
           <MessageComponent scrollOnEnter={scrollOnEnter} show={Boolean(risk)}>
-            {message}
+            {message.replace('#userName', name)}
           </MessageComponent>
         ))}
         <UserInputContainer direction={isInTextFieldSteps ? 'row' : 'column'}>
