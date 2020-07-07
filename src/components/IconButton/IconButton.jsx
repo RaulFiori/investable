@@ -9,6 +9,10 @@ const IconButton = styled(Button)`
   width: 40px;
   height: 40px;
   padding: 0;
+
+  @media (min-width: 1024px) {
+    min-width: 40px;
+  }
 `;
 
 export default IconButton;

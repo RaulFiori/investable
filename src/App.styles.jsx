@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 const handleHasPadding = ({ hasPadding }) => {
   if (hasPadding) {
     return css`
-      padding: 20px 82px;
+      padding: 20px 200px;
       padding-bottom: 80px;
 
       @media (max-width: 767px) {
@@ -25,7 +25,7 @@ export const Background = styled.main`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  overflow: scroll;
+  overflow: auto;
   height: 100vh;
 
   ${handleHasPadding}

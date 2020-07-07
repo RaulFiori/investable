@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import Icon from '@mdi/react';
 import { mdiArrowUp } from '@mdi/js';
 import { useParams } from 'react-router-dom';

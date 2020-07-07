@@ -20,6 +20,10 @@ const FloatingButton = styled(Button)`
   @media (max-width: 767px) {
     right: 20px;
   }
+
+  @media (min-width: 1024px) {
+    min-width: 64px;
+  }
 `;
 
 export default FloatingButton;

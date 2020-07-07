@@ -136,6 +136,7 @@ export const Chat = () => {
                   mode="light"
                   label={inputLabel}
                   type={inputType}
+                  fullWidth
                   onChange={({ target: { value } }) => setText(value)}
                 />
               </TextFieldContainer>
@@ -168,7 +169,13 @@ export const Chat = () => {
           )}
           {step === 'finish' && (
             <>
-              <ButtonForm onClick={() => history.replace('/firstAccess')}>
+              <ButtonForm
+                onClick={() =>
+                  history.replace(
+                    `/home/${process.env.REACT_APP_USER_ID}/firstAccess`,
+                  )
+                }
+              >
                 Sim, vamos!
               </ButtonForm>
               <ButtonForm onClick={() => history.goBack()}>

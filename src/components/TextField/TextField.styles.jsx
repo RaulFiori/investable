@@ -81,4 +81,9 @@ export const InputContainer = styled.div`
   position: relative;
   width: 100%;
   margin-bottom: ${({ marginBottom }) => marginBottom || 0}px;
+
+  @media (min-width: 1024px) {
+    max-width: ${({ fullWidth }) => (fullWidth ? '100%' : '480px')};
+    align-self: center;
+  }
 `;

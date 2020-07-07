@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Button from '../../components/Button/Button';
+import TextField from '../../components/TextField/TextField';
 
 export const Background = styled.div`
   display: flex;
@@ -12,7 +13,7 @@ export const Background = styled.div`
   padding-left: 70px;
   padding-right: 20px;
   padding-bottom: 140px;
-  overflow: scroll;
+  overflow: auto;
 `;
 
 export const UserInputContainer = styled.div`

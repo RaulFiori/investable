@@ -30,17 +30,26 @@ const Button = styled.button`
 
   &:disabled {
     pointer-events: none;
+    opacity: 0.5;
   }
 
-  /* &:hover {
+  &:hover {
+    opacity: 0.84;
+  }
 
-  } */
+  @media (min-width: 1024px) {
+    min-width: 360px;
+    align-self: center;
+  }
 
   ${({ variant }) =>
     variant === 'outlined' &&
     css`
       border: 1px solid #e43959;
       background: transparent;
+      &:hover {
+        background-color: rgba(228, 57, 89, 0.08);
+      }
     `};
 `;
 

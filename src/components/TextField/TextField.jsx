@@ -32,6 +32,7 @@ const TextField = ({
   marginBottom,
   type,
   mode,
+  fullWidth,
 }) => {
   const [focused, setFocused] = useState(false);
   const [inputType, setInputType] = useState(type);
@@ -51,7 +52,7 @@ const TextField = ({
 
   return (
     <ThemeProvider theme={theme}>
-      <InputContainer marginBottom={marginBottom}>
+      <InputContainer fullWidth={fullWidth} marginBottom={marginBottom}>
         <Label focused={focused} hasValue={hasValue(value)}>
           {label}
         </Label>
@@ -83,6 +84,7 @@ TextField.propTypes = {
   marginBottom: PropTypes.number,
   type: PropTypes.string,
   mode: PropTypes.oneOf(['dark', 'light']),
+  fullWidth: PropTypes.bool,
 };
 
 TextField.defaultProps = {
@@ -92,6 +94,7 @@ TextField.defaultProps = {
   marginBottom: null,
   type: 'text',
   mode: 'dark',
+  fullWidth: false,
 };
 
 export default TextField;

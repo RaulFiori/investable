@@ -21,6 +21,7 @@ import {
 import FloatingButton from '../../components/FloatingButton/FloatingButton';
 import { Profile } from '../Profile/Profile';
 import { Invest } from '../Invest/Invest';
+import { Suggestions } from '../Suggestions/Suggestions';
 
 const TABS = [
   {
@@ -52,9 +53,14 @@ export const Main = () => {
     location.pathname.includes(key),
   );
 
+  const isFirstAccess = location.pathname.includes('firstAccess');
+  const title = isFirstAccess ? 'SUGESTOES' : currentTab?.label?.toUpperCase();
+
   return (
     <>
-      <Header withBack={false}>{currentTab?.label?.toUpperCase()}</Header>
+      <Header backUrl={`${url}/dashboard`} withBack={isFirstAccess}>
+        {title}
+      </Header>
       <Content>
         <Switch>
           {TABS.map(({ key, component }) => (
@@ -64,6 +70,9 @@ export const Main = () => {
               component={component}
             />
           ))}
+          <Route path={`${path}/firstAccess`}>
+            <Suggestions />
+          </Route>
           <Route exact path={path}>
             <Redirect to={`${url}/dashboard`} />
           </Route>
@@ -81,9 +90,11 @@ export const Main = () => {
           </Tab>
         ))}
       </TabsContainer>
-      <FloatingButton onClick={() => history.push('/chat/help')}>
-        <WhiteLogo />
-      </FloatingButton>
+      {!isFirstAccess && (
+        <FloatingButton onClick={() => history.push('/chat/help')}>
+          <WhiteLogo />
+        </FloatingButton>
+      )}
     </>
   );
 };

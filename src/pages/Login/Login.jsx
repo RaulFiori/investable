@@ -30,7 +30,7 @@ export const Login = () => {
         />
         <Button
           onClick={() => history.push(`/home/${process.env.REACT_APP_USER_ID}`)}
-          disabled={email.length === 0 && password.length === 0}
+          disabled={email.length === 0 || password.length === 0}
         >
           ENTRAR
         </Button>
